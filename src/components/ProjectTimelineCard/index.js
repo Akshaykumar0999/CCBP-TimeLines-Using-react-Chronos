@@ -1,33 +1,39 @@
-// Write your code here
 import {AiFillCalendar} from 'react-icons/ai'
-import './index.css'
+
+import {
+  ProjectCardContainer,
+  ProjectImage,
+  ProjectTitleAndDurationContainer,
+  ProjectTitle,
+  DurationContainer,
+  Duration,
+  ProjectDescription,
+  VisitLink,
+} from './styledComponents'
 
 const ProjectTimelineCard = props => {
   const {projectDetails} = props
   const {
+    imageUrl,
     projectTitle,
     description,
-    imageUrl,
-    duration,
     projectUrl,
+    duration,
   } = projectDetails
+
   return (
-    <div className="project-container">
-      <div className="card-container">
-        <img className="project-img" src={imageUrl} alt="project" />
-        <div className="header-card">
-          <h1 className="project-title">{projectTitle}</h1>
-          <div className="duration-card">
-            <AiFillCalendar />
-            <p className="project-duration">{duration}</p>
-          </div>
-        </div>
-        <p className="project-description">{description}</p>
-        <a className="anchor-element" href={projectUrl}>
-          Visit
-        </a>
-      </div>
-    </div>
+    <ProjectCardContainer>
+      <ProjectImage src={imageUrl} alt="project" />
+      <ProjectTitleAndDurationContainer>
+        <ProjectTitle>{projectTitle}</ProjectTitle>
+        <DurationContainer>
+          <AiFillCalendar color="#171f46" />
+          <Duration>{duration}</Duration>
+        </DurationContainer>
+      </ProjectTitleAndDurationContainer>
+      <ProjectDescription>{description}</ProjectDescription>
+      <VisitLink href={projectUrl}>Visit</VisitLink>
+    </ProjectCardContainer>
   )
 }
 
